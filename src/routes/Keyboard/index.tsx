@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useFocusTrap } from '../FocusTrap/hooks/useFocusTrap';
 import { keyCodes } from './constants';
 
 const emulateKeyPress = (code: string) => {
@@ -9,12 +10,14 @@ const emulateKeyPress = (code: string) => {
 
 export const KeyboardPage = () => {
   const [inputValue, setInputValue] = useState('');
+  const [inputRef, setInputRef] = useState<HTMLTextAreaElement | null>(null);
   const [isCapsLock, setIsCapsLock] = useState(false);
   const [isShift, setIsShift] = useState(false);
 
+  useFocusTrap(inputRef);
+
   useEffect(() => {
     const handleKeyPress = (evt: KeyboardEvent) => {
-      console.log(evt.code);
       if (evt.code === 'CapsLock') {
         setIsCapsLock((prevValue) => !prevValue);
         return;
@@ -35,17 +38,18 @@ export const KeyboardPage = () => {
         }
 
         if (evt.code === 'Space') {
-          return prevValue + ' ';
+          return `${prevValue} `;
         }
 
         if (evt.code === 'Enter') {
-          return prevValue + '\n';
+          return `${prevValue}\n`;
         }
 
         const key = keyCodes.flat().find((key) => key.code === evt.code);
 
         if (key) {
-          return prevValue + (isCapsLock || isShift ? key.key.toUpperCase() : key.key);
+          const shouldUpperCase = (!isCapsLock && isShift) || (isCapsLock && !isShift);
+          return prevValue + (shouldUpperCase ? key.key.toUpperCase() : key.key);
         }
 
         return prevValue;
@@ -61,12 +65,7 @@ export const KeyboardPage = () => {
 
   return (
     <div className='screen keyboard'>
-      <textarea
-        className='keyboard-input'
-        value={inputValue}
-        onChange={(evt) => setInputValue(evt.target.value)}
-        placeholder='Type something...'
-      />
+      <textarea ref={setInputRef} className='keyboard-input' value={inputValue} placeholder='Type something...' />
 
       <div className='keyboard-border'>
         {keyCodes.map((row, rowIndex) => (
