@@ -12,7 +12,7 @@ export const RootRoutes = () => {
   return (
     <>
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}>
-        <div className='sidebar-link disabled'>React Labs</div>
+        <div className='sidebar-link disabled'>React Labs (19)</div>
 
         {ROUTES.map((route) => {
           const isActive = location.pathname === route.path;
