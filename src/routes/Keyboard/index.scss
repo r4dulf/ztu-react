@@ -1,0 +1,103 @@
+.screen.keyboard {
+  $key-size: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+
+  .keyboard-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 500px;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    resize: none;
+  }
+
+  .keyboard-border {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #432e54;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+
+    .keyboard-row {
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+
+      .keyboard-key {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $key-size;
+        height: $key-size;
+        margin: 5px;
+        border-radius: 5px;
+        background-color: #4b4376;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        user-select: none;
+        color: #e8bcb9;
+
+        &.active {
+          background-color: #ae445a;
+        }
+
+        &:hover {
+          background-color: #ae445a;
+        }
+
+        &.Space {
+          width: $key-size * 8.25;
+        }
+
+        &.CapsLock {
+          width: $key-size * 2;
+        }
+
+        &.ShiftRight {
+          width: $key-size * 3;
+        }
+
+        &.Backspace,
+        &.Enter {
+          width: $key-size * 2.5;
+        }
+
+        &.ShiftLeft {
+          width: $key-size * 3;
+        }
+
+        &.Tab,
+        &.Backslash {
+          width: $key-size * 1.75;
+        }
+
+        &.ControlLeft,
+        &.ControlRight,
+        &.AltLeft,
+        &.AltRight,
+        &.MetaLeft,
+        &.MetaRight {
+          width: $key-size * 1.25;
+        }
+      }
+    }
+  }
+}
