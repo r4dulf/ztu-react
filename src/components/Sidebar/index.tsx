@@ -13,6 +13,6 @@ export const Sidebar = ({
   <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
     <div className='sidebar-toggle' onClick={() => setIsOpen(!isOpen)} />
     <div className='sidebar-content'>{children}</div>
-    <div className='overlay' onClick={() => setIsOpen(false)} />
+    <div className='sidebar-overlay' onClick={() => setIsOpen(false)} />
   </div>
 );

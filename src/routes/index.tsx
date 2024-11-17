@@ -14,20 +14,25 @@ export const RootRoutes = () => {
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className='sidebar-link disabled'>React Labs</div>
 
-        {ROUTES.map((route) => (
-          <div
-            key={route.path}
-            className={`sidebar-link ${location.pathname === route.path ? 'active' : ''}`}
-            onClick={() => {
-              if (!route.path) return;
+        {ROUTES.map((route) => {
+          const isActive = location.pathname === route.path;
+          const isDisabled = !route.path;
 
-              navigate(route.path);
-              setIsOpen(false);
-            }}
-          >
-            {route.label}
-          </div>
-        ))}
+          return (
+            <div
+              key={route.path}
+              className={`sidebar-link ${isActive ? 'active' : ''} ${isDisabled ? 'disabled' : ''}`}
+              onClick={() => {
+                if (isActive || isDisabled) return;
+
+                navigate(route.path!);
+                setIsOpen(false);
+              }}
+            >
+              {route.label}
+            </div>
+          );
+        })}
       </Sidebar>
 
       <Routes>
