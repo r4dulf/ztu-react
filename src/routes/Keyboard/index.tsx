@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { keyCodes } from './constants';
-import './index.scss';
 
 const emulateKeyPress = (code: string) => {
   const evt = new KeyboardEvent('keydown', { code });

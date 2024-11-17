@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+$main-color: #432e54;
+$secondary-color: #4b4376;
+$accent-color: #ae445a;
+$light-color: #e8bcb9;
+$light-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+@import './components';
+@import './routes';
+
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: $main-color;
 }

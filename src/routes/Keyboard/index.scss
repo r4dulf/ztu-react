@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: $light-color;
 
   .keyboard-input {
     display: flex;
@@ -19,7 +19,7 @@
     padding: 10px;
     border-radius: 5px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: $light-box-shadow;
     resize: none;
   }
 
@@ -29,8 +29,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: #432e54;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: $main-color;
+    box-shadow: $light-box-shadow;
     padding: 10px;
 
     .keyboard-row {
@@ -49,18 +49,15 @@
         height: $key-size;
         margin: 5px;
         border-radius: 5px;
-        background-color: #4b4376;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: $secondary-color;
+        box-shadow: $light-box-shadow;
         cursor: pointer;
         user-select: none;
-        color: #e8bcb9;
+        color: $light-color;
 
-        &.active {
-          background-color: #ae445a;
-        }
-
+        &.active,
         &:hover {
-          background-color: #ae445a;
+          background-color: $accent-color;
         }
 
         &.Space {
