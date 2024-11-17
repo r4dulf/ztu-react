@@ -1,0 +1,84 @@
+@use '../../variables' as *;
+
+.screen.react-hook-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(240, 235, 248);
+  padding: $space-lg;
+  box-sizing: border-box;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .radio-label {
+      display: block;
+    }
+
+    input {
+      padding: $space-sm;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+
+      &[type='text'] {
+        width: 250px;
+        margin-bottom: $space-md;
+      }
+
+      &[type='radio'] {
+        margin-right: $space-sm;
+        margin-bottom: $space-sm;
+      }
+    }
+
+    textarea {
+      padding: $space-sm;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-bottom: $space-md;
+      resize: vertical;
+      min-height: 50px;
+      max-height: 200px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .action-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      padding: $space-sm $space-md;
+      border-radius: 4px;
+      background-color: $main-color;
+      color: #fff;
+      font-size: 12pt;
+      border: 0;
+
+      &.reset {
+        background-color: transparent;
+        color: $main-color;
+
+        &:hover,
+        &:focus,
+        &:active {
+          cursor: pointer;
+          background-color: transparentize($color: $main-color, $amount: 0.9);
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        cursor: pointer;
+        background-color: darken($main-color, 10%);
+      }
+    }
+  }
+}

@@ -72,7 +72,7 @@ export const KeyboardPage = () => {
           <div key={rowIndex} className='keyboard-row'>
             {row.map((button, keyIndex) => {
               const isCapsLockKey = button.code === 'CapsLock';
-              const isShiftKey = button.code === 'ShiftLeft';
+              const isShiftKey = button.code === 'ShiftLeft' || button.code === 'ShiftRight';
 
               return (
                 <div

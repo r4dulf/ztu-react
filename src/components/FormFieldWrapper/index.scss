@@ -1,0 +1,51 @@
+@use '../../variables' as *;
+
+.form-island {
+  display: flex;
+  flex-direction: column;
+  padding: $space-lg;
+  background-color: #fff;
+  box-shadow: $light-box-shadow;
+  border-radius: 8px;
+  margin-bottom: $space-md;
+  border: 1px solid #ddd;
+
+  &.error {
+    border-color: $error-red;
+  }
+
+  .required {
+    color: $error-red;
+  }
+
+  .error-message {
+    color: $error-red;
+    margin-top: $space-sm;
+    font-size: 10pt;
+  }
+
+  .form-label {
+    margin-bottom: $space-md;
+    font-size: 12pt;
+  }
+
+  .reset-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    .reset-button {
+      padding: $space-xs $space-sm;
+      border-radius: 4px;
+      background-color: transparent;
+      color: #5f6368;
+      font-size: 10pt;
+
+      &:hover,
+      &:focus,
+      &:active {
+        cursor: pointer;
+        background-color: #ddd;
+      }
+    }
+  }
+}

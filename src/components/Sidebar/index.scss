@@ -1,5 +1,9 @@
+@use '../../variables' as *;
+
 .sidebar {
   position: absolute;
+  top: 0;
+  left: 0;
   display: grid;
   grid-template-columns: auto auto 1fr;
   height: 100%;
@@ -39,7 +43,6 @@
   .sidebar-overlay {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
-    transition: background-color 0.5s;
     z-index: 0;
   }
 

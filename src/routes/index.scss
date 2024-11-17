@@ -1,5 +1,7 @@
-@import './Keyboard';
-@import './FocusTrap';
+@use './Keyboard';
+@use './FocusTrap';
+@use './ReactHookForm';
+@use '../variables' as *;
 
 .sidebar-link {
   display: flex;
