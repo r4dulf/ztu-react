@@ -1,0 +1,27 @@
+@use '../../../variables' as *;
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: $space-md;
+  padding: $space-lg;
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $space-sm;
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+    padding: $space-md;
+
+    h2 {
+      margin: 0;
+    }
+  }
+}

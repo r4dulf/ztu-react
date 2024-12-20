@@ -1,0 +1,11 @@
+@use './HomeScreen';
+@use './Posts';
+@use './Todos';
+
+.prefetch-for-routes.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+}

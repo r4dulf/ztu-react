@@ -1,0 +1,32 @@
+@use '../../../variables' as *;
+
+.home-screen.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+
+  .link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: $space-lg;
+
+    a {
+      margin-top: $space-md;
+      color: $light-color;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      padding: $space-sm $space-md;
+      border-radius: 4px;
+      background-color: $secondary-color;
+
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 @use './FocusTrap';
 @use './ReactHookForm';
 @use './IndexPage';
+@use './DataPrefetcherForRoutes';
 @use '../variables' as *;
 
 .sidebar-link {
