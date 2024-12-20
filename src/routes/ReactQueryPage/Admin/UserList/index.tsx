@@ -1,13 +1,17 @@
-import { LoadingScreen } from '../../../../components/LoadingScreen';
-import { useUsersQuery } from '../../queries/user';
+import { User } from '../../indexedDB/types';
 import { UserRow } from './UserRow';
 
-export const UserList = () => {
-  const { data: users, isLoading } = useUsersQuery();
+export const UserList = ({ users }: { users: User[] }) => (
+  <div className='user-list'>
+    {users.length > 0 && (
+      <div className='users-list-header'>
+        <div className='cell'>Name</div>
+        <div className='cell'>Email</div>
+      </div>
+    )}
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
-  return <div className='user-list'>{users?.map((user) => <UserRow key={user.id} user={user} />)}</div>;
-};
+    {users.map((user) => (
+      <UserRow key={user.id} user={user} />
+    ))}
+  </div>
+);

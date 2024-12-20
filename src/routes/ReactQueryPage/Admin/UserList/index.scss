@@ -6,4 +6,11 @@
   flex-direction: column;
   gap: $space-md;
   padding: $space-md;
+
+  .users-list-header {
+    display: grid;
+    grid-template-columns: 200px 200px $space-xxl 100px 100px;
+    gap: $space-sm;
+    font-weight: bold;
+  }
 }

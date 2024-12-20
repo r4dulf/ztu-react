@@ -2,7 +2,7 @@
 
 .user-row {
   display: grid;
-  grid-template-columns: 1fr 1fr $space-xxl $space-xxl $space-xxl;
+  grid-template-columns: 200px 200px $space-xxl 100px 100px;
   gap: $space-sm;
 
   .edit-user {
@@ -11,5 +11,9 @@
 
   .delete-user {
     grid-column: 5;
+  }
+
+  button {
+    width: 100%;
   }
 }
