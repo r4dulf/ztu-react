@@ -1,4 +1,4 @@
-import { object, string, StringSchema } from 'yup';
+import { object, string } from 'yup';
 import { tShirtSizes } from './constants';
 
 const onlyAlphabetsWithSpaces = /^[a-zA-Z\s]*$/;
@@ -6,20 +6,14 @@ const lowercase = /[a-z]/;
 
 export type TShirtOrderData = {
   name: string;
-  size: string;
-  comment: string;
+  size?: string | null;
+  comment?: string | null;
 };
 
-export const tShirtOrderSchema = object<
-  TShirtOrderData,
-  {
-    name: StringSchema<string | undefined>;
-    size: StringSchema<string | null | undefined>;
-    comment: StringSchema<string | null | undefined>;
-  }
->({
+export const tShirtOrderSchema = object().shape({
   name: string()
     .trim()
+    .required('Name is required')
     .min(3, 'Name must be at least 3 characters')
     .max(50, 'Name must be at most 50 characters')
     .test({
@@ -39,6 +33,6 @@ export const tShirtOrderSchema = object<
         return true;
       },
     }),
-  size: string().nullable().oneOf(tShirtSizes, 'Selected size is not available'),
-  comment: string().nullable().trim().max(500, 'Comment must be at most 500 characters'),
+  size: string().nullable().notRequired().oneOf(tShirtSizes, 'Selected size is not available'),
+  comment: string().nullable().notRequired().trim().max(500, 'Comment must be at most 500 characters'),
 });

@@ -3,9 +3,20 @@ import { ValidationError } from 'yup';
 import { FormFieldWrapper } from '../../components/FormFieldWrapper';
 import { tShirtSizes } from './constants';
 import { TShirtOrderData, tShirtOrderSchema } from './validation';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const ReactHookFormPage = () => {
-  const { register, handleSubmit, setFocus, resetField, reset, watch, formState } = useForm<Partial<TShirtOrderData>>();
+  const {
+    register,
+    handleSubmit,
+    setFocus,
+    resetField,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(tShirtOrderSchema),
+  });
 
   const onSubmit = async (data: Partial<TShirtOrderData>) => {
     try {
@@ -30,19 +41,9 @@ export const ReactHookFormPage = () => {
           isRequired={true}
           label='Name'
           onReset={() => resetField('name')}
-          error={formState.errors.name?.message}
+          error={errors.name?.message}
         >
-          <input
-            type='text'
-            placeholder='Name'
-            {...register('name', {
-              validate: (value) =>
-                tShirtOrderSchema
-                  .validateAt('name', { name: value })
-                  .then(() => true)
-                  .catch((error) => error.message),
-            })}
-          />
+          <input type='text' placeholder='Name' {...register('name')} />
         </FormFieldWrapper>
 
         <FormFieldWrapper
@@ -50,16 +51,18 @@ export const ReactHookFormPage = () => {
           label='Shirt size'
           onReset={sizeValue ? () => resetField('size') : undefined}
         >
-          {tShirtSizes.map((size) => (
-            <label key={size} className='radio-label'>
-              <input type='radio' key={size} {...register('size', {})} value={size} />
-              <span>{size}</span>
-            </label>
-          ))}
+          <div className='t-shirt-sizes-wrapper'>
+            {tShirtSizes.map((size) => (
+              <label key={size} className='radio-label'>
+                <input type='radio' key={size} {...register('size')} value={size} />
+                <span>{size}</span>
+              </label>
+            ))}
+          </div>
         </FormFieldWrapper>
 
         <FormFieldWrapper label='T-Shirt Preview'>
-          <img src='https://via.placeholder.com/200' alt='T-Shirt Preview' />
+          <img src='https://placehold.co/600x400' alt='T-Shirt Preview' />
         </FormFieldWrapper>
 
         <FormFieldWrapper isRequired={false} label='Other thoughts or comments'>
