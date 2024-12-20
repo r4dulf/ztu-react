@@ -1,0 +1,9 @@
+@use '../../../../variables' as *;
+@use './UserRow';
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-md;
+}

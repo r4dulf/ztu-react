@@ -1,0 +1,40 @@
+@use '../../variables' as *;
+
+.modal-window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal-window {
+    border-radius: 4px;
+    overflow: hidden;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $space-sm $space-md;
+      background-color: $main-color;
+      color: $light-color;
+      box-sizing: border-box;
+
+      .close-button {
+        cursor: pointer;
+        color: $light-color;
+      }
+    }
+
+    .modal-body {
+      padding: $space-md;
+      background-color: $light-color;
+      box-sizing: border-box;
+    }
+  }
+}

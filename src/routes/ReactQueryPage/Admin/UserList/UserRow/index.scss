@@ -1,0 +1,15 @@
+@use '../../../../../variables' as *;
+
+.user-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr $space-xxl $space-xxl $space-xxl;
+  gap: $space-sm;
+
+  .edit-user {
+    grid-column: 4;
+  }
+
+  .delete-user {
+    grid-column: 5;
+  }
+}

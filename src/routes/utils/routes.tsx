@@ -3,6 +3,7 @@ import { FocusTrap } from '../FocusTrap';
 import { KeyboardPage } from '../Keyboard';
 import { ReactHookFormPage } from '../ReactHookForm';
 import { DataPrefetcherForRoutes } from '../DataPrefetcherForRoutes';
+import { ReactQueryPage } from '../ReactQueryPage';
 
 export const ROUTES: (RouteObject & { label: string; hasSubroutes?: boolean })[] = [
   {
@@ -24,6 +25,12 @@ export const ROUTES: (RouteObject & { label: string; hasSubroutes?: boolean })[]
     label: 'Lab 4: Data Prefetch for Routes',
     element: <DataPrefetcherForRoutes />,
     path: '/data-prefetcher-for-routes',
+    hasSubroutes: true,
+  },
+  {
+    label: 'Lab 5: React Query',
+    element: <ReactQueryPage />,
+    path: '/react-query',
     hasSubroutes: true,
   },
 ];

@@ -1,0 +1,34 @@
+@use '../../../../variables' as *;
+
+.user-modal {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: $space-sm;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        padding: $space-sm;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: $space-sm;
+        border: none;
+        border-radius: 5px;
+        background-color: $main-color;
+        color: $light-color;
+        cursor: pointer;
+      }
+    }
+  }
+}

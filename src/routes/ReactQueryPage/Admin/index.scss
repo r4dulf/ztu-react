@@ -1,0 +1,26 @@
+@use './UserList';
+@use './UserModal';
+@use '../../../variables' as *;
+
+.admin-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: $space-md;
+    background-color: $main-color;
+    color: $light-color;
+    box-sizing: border-box;
+  }
+
+  .body {
+    h3 {
+      margin: $space-md 0;
+      text-align: center;
+    }
+  }
+}

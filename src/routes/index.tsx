@@ -38,7 +38,7 @@ export const RootRoutes = () => {
 
       <Routes>
         {ROUTES.map((route) => (
-          <Route key={route.path} path={`${route.path}${route.hasSubroutes ? '/*' : ''}`} element={route.element} />
+          <Route key={route.path} path={`${route.path}${route.hasSubroutes ? '/*' : '/'}`} element={route.element} />
         ))}
 
         <Route path='*' element={<IndexPage />} />
