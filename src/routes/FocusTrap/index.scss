@@ -1,4 +1,21 @@
+@use '../../variables' as *;
+
 .screen.focus-trap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button.open-modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $main-color;
+    color: $light-color;
+    cursor: pointer;
+  }
+}
+
+.focus-trap-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,14 +24,50 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 
-  input {
-    width: 200px;
-    height: 50px;
-    padding: 10px;
+  .content-container {
+    background-color: #fff;
+    padding: 20px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+
+      h2 {
+        margin: 0;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .modal-body {
+      margin-bottom: 20px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: $space-sm;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: $secondary-color;
+        color: $light-color;
+        cursor: pointer;
+      }
+    }
   }
 }

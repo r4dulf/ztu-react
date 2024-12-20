@@ -1,17 +1,76 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-export const useFocusTrap = (input: HTMLInputElement | HTMLTextAreaElement | null) => {
+export const useFocusTrap = (isActive: boolean) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (!input) return;
+    if (!isActive || !containerRef.current) return;
 
-    const onBlurListener = () => input.focus();
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      "input:not([disabled]):not([type='hidden'])",
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      "[tabindex]:not([tabindex='-1'])",
+    ];
 
-    onBlurListener();
+    const focusableElements = containerRef.current.querySelectorAll(focusableSelectors.join(','));
 
-    input.addEventListener('blur', onBlurListener);
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+
+          if (isFocusableElement(lastElement)) {
+            lastElement.focus();
+          }
+        }
+
+        return;
+      }
+
+      // Tab
+      if (document.activeElement === lastElement) {
+        e.preventDefault();
+
+        if (isFocusableElement(firstElement)) {
+          firstElement.focus();
+        }
+      }
+    };
+
+    const handleFocus = () => {
+      if (!containerRef.current?.contains(document.activeElement) && isFocusableElement(firstElement)) {
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('focusin', handleFocus);
+
+    // Початкове встановлення фокусу
+    if (isFocusableElement(firstElement)) {
+      firstElement.focus();
+    }
 
     return () => {
-      input.removeEventListener('blur', onBlurListener);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('focusin', handleFocus);
     };
-  }, [input]);
+  }, [isActive]);
+
+  return containerRef;
+};
+
+const isFocusableElement = (
+  element: Element
+): element is HTMLAnchorElement | HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement => {
+  return ['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'DIV'].includes(element.tagName);
 };

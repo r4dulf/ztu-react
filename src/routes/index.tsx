@@ -24,9 +24,9 @@ export const RootRoutes = () => {
               key={route.path}
               className={`sidebar-link ${isActive ? 'active' : ''} ${isDisabled ? 'disabled' : ''}`}
               onClick={() => {
-                if (isActive || isDisabled) return;
+                if (isActive || !route.path) return;
 
-                navigate(route.path!);
+                navigate(route.path);
                 setIsOpen(false);
               }}
             >
