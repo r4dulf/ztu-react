@@ -54,7 +54,7 @@ export const ReactHookFormPage = () => {
           <div className='t-shirt-sizes-wrapper'>
             {tShirtSizes.map((size) => (
               <label key={size} className='radio-label'>
-                <input type='radio' key={size} {...register('size')} value={size} />
+                <input type='radio' key={size} {...register('size')} />
                 <span>{size}</span>
               </label>
             ))}
