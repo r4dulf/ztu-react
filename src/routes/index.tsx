@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarContext } from '../context/SidebarContext';
 import { ROUTES } from './utils/routes';
+import { IndexPage } from './IndexPage';
 
 export const RootRoutes = () => {
   const navigate = useNavigate();
@@ -39,6 +40,8 @@ export const RootRoutes = () => {
         {ROUTES.map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
+
+        <Route path='*' element={<IndexPage />} />
       </Routes>
     </>
   );

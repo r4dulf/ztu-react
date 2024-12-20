@@ -25,6 +25,12 @@
     border-radius: 0 0 5px 0;
     z-index: 10;
 
+    &:active,
+    &:focus,
+    &:hover {
+      cursor: pointer;
+    }
+
     &::after {
       color: $light-color;
     }
@@ -46,18 +52,8 @@
     z-index: 0;
   }
 
-  &.closed {
-    .sidebar-toggle::after {
-      content: '>';
-    }
-  }
-
   &.open {
     transform: translate(0, 0);
-
-    .sidebar-toggle::after {
-      content: '<';
-    }
 
     .sidebar-overlay {
       width: 200vw;

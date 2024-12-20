@@ -28,7 +28,9 @@ export const KeyboardPage = () => {
         return;
       }
 
-      if (['ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight'].includes(evt.code)) {
+      if (['ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight', 'Tab'].includes(evt.code)) {
+        evt.preventDefault();
+
         return;
       }
 

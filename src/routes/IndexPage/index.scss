@@ -1,0 +1,10 @@
+@use '../../variables.scss' as *;
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $light-color;
+  text-align: center;
+}
