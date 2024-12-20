@@ -12,31 +12,34 @@ const API_ENDPOINT = 'https://jsonplaceholder.typicode.com';
 export const DataPrefetcherForRoutes = () => {
   const navigate = useNavigate();
 
-  const apiCall = useCallback(async (route: string): Promise<{ todos?: Todo[]; posts?: Post[] }> => {
-    const subRoute = route.split('/').at(-1);
+  const apiCall = useCallback(
+    async (route: string): Promise<{ todos?: Todo[]; posts?: Post[] }> => {
+      const subRoute = route.split('/').at(-1);
 
-    switch (subRoute) {
-      case 'todos': {
-        const response = await fetch(`${API_ENDPOINT}/todos`);
-        const data = (await response.json()) as Todo[];
+      switch (subRoute) {
+        case 'todos': {
+          const response = await fetch(`${API_ENDPOINT}/todos`);
+          const data = (await response.json()) as Todo[];
 
-        return { todos: data };
+          return { todos: data };
+        }
+
+        case 'posts': {
+          const response = await fetch(`${API_ENDPOINT}/posts`);
+          const data = (await response.json()) as Post[];
+
+          return { posts: data };
+        }
+
+        default: {
+          navigate('./', { replace: true });
+
+          return {};
+        }
       }
-
-      case 'posts': {
-        const response = await fetch(`${API_ENDPOINT}/posts`);
-        const data = (await response.json()) as Post[];
-
-        return { posts: data };
-      }
-
-      default: {
-        navigate('./', { replace: true });
-
-        return {};
-      }
-    }
-  }, []);
+    },
+    [navigate]
+  );
 
   return (
     <div className='prefetch-for-routes screen'>
