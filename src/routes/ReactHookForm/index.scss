@@ -76,7 +76,7 @@
         &:focus,
         &:active {
           cursor: pointer;
-          background-color: transparentize($color: $main-color, $amount: 0.9);
+          filter: brightness(1.1);
         }
       }
 
